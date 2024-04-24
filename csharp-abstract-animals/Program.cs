@@ -1,4 +1,6 @@
-﻿namespace csharp_abstract_animals
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace csharp_abstract_animals
 {
     internal class Program
     {
@@ -16,24 +18,39 @@
 
             foreach (var animal in animals) 
             {
+                Console.WriteLine($"{animal.GetType().Name}");
                 animal.Sleep();
                 animal.MakeTowards();
                 animal.Eat();
+                Console.WriteLine();
             }
 
-            
-            
+
+
             //* *Esercizio 2 : interfacce * *
-            //Alcuni degli animali che abbiamo creato volano, altri nuotano.
-            //Gli animali che volano hanno il seguente metodo:
-            //-void Vola()(mostra a video “Sto volando!!!”)
-            //Gli animali che nuotano hanno il seguente metodo:
-            //-void Nuota()(mostra a video “Sto nuotando!!!”)
-            //Scrivere un programma avente 2 metodi:
-            //-void FaiVolare(IVolante animale)
-            //- void FaiNuotare(INuotante animale)
-            //Questi metodi prendono come parametro un animale che può o volare / nuotare e richiamano il corrispondente metodo Vola() / Nuota().
-            //Scrivere un programma che istanzi animali che volano o nuotano e richiamare i metodi FaiVolare / FaiNuotare passandoglieli come parametro.
+            //Scrivere un programma che istanzi animali che volano o nuotano e richiamare
+            //i metodi FaiVolare / FaiNuotare passandoglieli come parametro.
+            
+
+            List<IFlying> animaliVOlanti = new List<IFlying>();
+            animaliVOlanti.Add(new Bird());
+            animaliVOlanti.Add(new Eagle());
+
+            foreach (var volante in animaliVOlanti)
+            {
+                Console.WriteLine($"{volante.GetType().Name}");
+                volante.Fly();
+                Console.WriteLine();
+            }
+                
+
+            Dolphin dolphin = new Dolphin();
+
+            Console.WriteLine($"{dolphin.GetType().Name}");
+            dolphin.Swim();
+
+            
+
         }
     }
 }
